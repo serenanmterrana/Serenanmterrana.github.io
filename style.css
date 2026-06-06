@@ -1,3 +1,5 @@
+
+/* GLOBAL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,36 +7,114 @@ body {
   color: white;
 }
 
-nav {
+/* NAV */
+.nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 40px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
 }
 
+.nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* HERO */
 .hero {
-  height: 70vh;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')
+  center/cover no-repeat;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-section {
-  padding: 60px 20px;
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
 }
 
-.card {
-  padding: 20px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.05);
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
+.hero h1 {
+  font-size: 60px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 12px 24px;
+  background: #ff2d55;
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid white;
+}
+
+/* SCRIPTURE */
+.scripture {
+  padding: 80px 20px;
+  text-align: center;
+  font-size: 24px;
+  background: #111827;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+}
+
+/* MAP */
 #map {
-  width: 100%;
   height: 600px;
   border-radius: 12px;
 }
 
+/* DONATE */
+.donate {
+  text-align: center;
+  padding: 80px 20px;
+  background: #111;
+}
+
+.donate button {
+  padding: 12px 24px;
+  background: #ff2d55;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: black;
+}
+
+/* MAP PINS */
 .custom-pin {
   background: transparent;
 }
@@ -44,24 +124,13 @@ section {
   height: 12px;
   background: #ff2d55;
   border-radius: 50%;
-
-  box-shadow:
-    0 0 10px rgba(255,45,85,0.9),
-    0 0 20px rgba(255,45,85,0.6);
-
-  animation: pulse 1.6s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(255,45,85,0.8);
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.4);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
 }
