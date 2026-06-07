@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Serena Terrana | Ministry</title>
+    <title>Kingdom Journey | Ministry</title>
     <meta
       name="description"
       content="A cinematic ministry journey website with global testimonies, missions, giving, and newsletter signup."
@@ -14,13 +14,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Kingdom Journey home">
         <span class="brand-mark"></span>
-        <span>Serena Terrana</span>
+        <span>Kingdom Journey</span>
       </a>
       <nav class="top-nav" aria-label="Main navigation">
         <a href="#about">About Me</a>
@@ -44,8 +50,8 @@
             <span>Matthew 24:14</span>
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#nations">Explore the Nations</a>
-            <a class="button secondary" href="#donate">Sow Into the Mission</a>
+            <a class="button primary" href="#donate">Sow Into the Mission</a>
+            <a class="button secondary" href="#nations">Explore the Nations</a>
           </div>
         </div>
       </section>
@@ -85,6 +91,27 @@
         </div>
       </section>
 
+      <section class="section map-section" id="nations">
+        <div class="section-heading centered">
+          <p class="eyebrow">Interactive Nations Map</p>
+          <h2>Click a glowing red pin to open galleries and testimonies.</h2>
+          <p>
+            India is intentionally shown only as a red mission pin. Use the private tab below the map to open its
+            testimonies and gallery without a public label or flag.
+          </p>
+        </div>
+
+        <div class="world-stage">
+          <div class="world-map" id="worldMap" aria-label="Interactive world map with nation pins"></div>
+        </div>
+
+        <div class="nation-tabs" id="nationTabs" aria-label="Nation gallery links"></div>
+        <label class="nation-select-wrap" for="nationSelect">
+          <span>Choose a nation</span>
+          <select id="nationSelect" aria-label="Choose a nation to view testimonies"></select>
+        </label>
+      </section>
+
       <section class="section video-section" id="videos">
         <div class="section-heading centered">
           <p class="eyebrow">Ministry Videos</p>
@@ -110,58 +137,7 @@
               <a class="text-link" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
             </div>
           </article>
-          <div class="video-link-list">
-            <a class="video-link-card" href="#" target="_blank" rel="noopener">
-              <i class="fa-brands fa-youtube"></i>
-              <span>
-                <strong>YouTube Message</strong>
-                <small>Add a sermon, teaching, or ministry recap link.</small>
-              </span>
-            </a>
-            <a class="video-link-card" href="#" target="_blank" rel="noopener">
-              <i class="fa-brands fa-instagram"></i>
-              <span>
-                <strong>Instagram Testimony</strong>
-                <small>Add a Reel showing a testimony or trip moment.</small>
-              </span>
-            </a>
-            <a class="video-link-card" href="#" target="_blank" rel="noopener">
-              <i class="fa-brands fa-tiktok"></i>
-              <span>
-                <strong>TikTok Field Clip</strong>
-                <small>Add a short-form ministry video link.</small>
-              </span>
-            </a>
-            <a class="video-link-card" href="#" target="_blank" rel="noopener">
-              <i class="fa-brands fa-facebook-f"></i>
-              <span>
-                <strong>Facebook Live</strong>
-                <small>Add a live service, prayer night, or testimony replay.</small>
-              </span>
-            </a>
-          </div>
         </div>
-      </section>
-
-      <section class="section map-section" id="nations">
-        <div class="section-heading centered">
-          <p class="eyebrow">Interactive Nations Map</p>
-          <h2>Click a glowing red pin to open galleries and testimonies.</h2>
-          <p>
-            India is intentionally shown only as a red mission pin. Use the private tab below the map to open its
-            testimonies and gallery without a public label or flag.
-          </p>
-        </div>
-
-        <div class="world-stage">
-          <div class="world-map" id="worldMap" aria-label="Interactive world map with nation pins"></div>
-        </div>
-
-        <div class="nation-tabs" id="nationTabs" aria-label="Nation gallery links"></div>
-        <label class="nation-select-wrap" for="nationSelect">
-          <span>Choose a nation</span>
-          <select id="nationSelect" aria-label="Choose a nation to view testimonies"></select>
-        </label>
       </section>
 
       <section class="section donate-feature" id="donate">
@@ -202,10 +178,26 @@
           <p class="eyebrow">Stay Connected</p>
           <h2>Partner, pray, and receive fresh testimonies from the field.</h2>
         </div>
-        <form class="newsletter-form" action="#" method="post">
+        <form
+          class="newsletter-form"
+          action="https://gmail.us21.list-manage.com/subscribe/post"
+          method="post"
+          target="_blank"
+        >
+          <input type="hidden" name="u" value="e34206ebb5356d9354d0cfad7" />
+          <input type="hidden" name="id" value="5adf26364f" />
+          <input type="hidden" name="mc_signupsource" value="hosted" />
+          <div class="mailchimp-hidden" aria-hidden="true">
+            <label for="b_name">Name</label>
+            <input id="b_name" type="text" name="b_name" tabindex="-1" value="" />
+            <label for="b_email">Email</label>
+            <input id="b_email" type="email" name="b_email" tabindex="-1" value="" />
+            <label for="b_comment">Comment</label>
+            <textarea id="b_comment" name="b_comment" tabindex="-1"></textarea>
+          </div>
           <label for="email">Newsletter Signup</label>
           <div class="form-row">
-            <input id="email" name="email" type="email" placeholder="Your email address" required />
+            <input id="email" name="MERGE0" type="email" placeholder="Your email address" required />
             <button type="submit">Join</button>
           </div>
           <p>Monthly updates, prayer points, stories, and upcoming mission trips.</p>
@@ -215,7 +207,7 @@
 
     <footer class="site-footer">
       <div>
-        <strong>Serena Terrana</strong>
+        <strong class="footer-brand">Kingdom Journey</strong>
         <p>Sharing Jesus, gathering testimonies, and believing for harvest in every nation.</p>
       </div>
       <div class="social-links" aria-label="Social media links">
