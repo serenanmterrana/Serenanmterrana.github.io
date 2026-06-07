@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/28679591/README.md)
 # Kingdom Journey Ministry Website
 
 This is a static ministry website built for GitHub Pages.
