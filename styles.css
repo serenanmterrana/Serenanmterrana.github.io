@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap");
+
 :root {
   --bg: #06070b;
   --bg-soft: #11131c;
@@ -11,6 +13,8 @@
   --green: #69f0ae;
   --violet: #a985ff;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --brand-font: "Cinzel", Georgia, serif;
+  --heading-font: "Cormorant Garamond", Georgia, serif;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -76,8 +80,11 @@ img {
   align-items: center;
   gap: 0.7rem;
   text-decoration: none;
-  font-weight: 800;
-  letter-spacing: 0;
+  font-family: var(--brand-font);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .brand-mark {
@@ -192,6 +199,16 @@ img {
   max-width: 760px;
 }
 
+.hero-content h1 {
+  max-width: 720px;
+  margin-bottom: 1.35rem;
+  font-family: var(--heading-font);
+  font-size: clamp(2.85rem, 6.2vw, 6.15rem);
+  font-weight: 600;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
 .eyebrow {
   margin: 0 0 1rem;
   color: var(--gold);
@@ -210,20 +227,29 @@ p {
 
 h1 {
   margin-bottom: 1.2rem;
+  font-family: var(--heading-font);
   font-size: clamp(3rem, 8vw, 7.8rem);
+  font-weight: 600;
   line-height: 0.95;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h2 {
   margin-bottom: 1rem;
+  font-family: var(--heading-font);
   font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h3 {
+  font-family: var(--heading-font);
   font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 p {
@@ -360,13 +386,13 @@ p {
 
 .video-feature-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-  gap: clamp(1rem, 4vw, 2rem);
+  grid-template-columns: minmax(0, 1fr);
   margin-top: 2.5rem;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
-.video-card,
-.video-link-card {
+.video-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
@@ -410,51 +436,6 @@ p {
 .featured-video h3 {
   margin-bottom: 0.65rem;
   font-size: clamp(1.5rem, 3vw, 2.4rem);
-}
-
-.video-link-list {
-  display: grid;
-  gap: 0.9rem;
-}
-
-.video-link-card {
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
-  gap: 0.85rem;
-  align-items: center;
-  padding: 1rem;
-  text-decoration: none;
-  transition: transform 180ms ease, border-color 180ms ease;
-}
-
-.video-link-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 210, 122, 0.5);
-}
-
-.video-link-card i {
-  display: inline-grid;
-  width: 3rem;
-  height: 3rem;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--gold);
-  font-size: 1.2rem;
-}
-
-.video-link-card strong,
-.video-link-card small {
-  display: block;
-}
-
-.video-link-card strong {
-  margin-bottom: 0.25rem;
-}
-
-.video-link-card small {
-  color: var(--muted);
-  line-height: 1.45;
 }
 
 .centered {
@@ -579,11 +560,7 @@ p {
 }
 
 .nation-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
+  display: none;
 }
 
 .nation-tab {
@@ -605,8 +582,9 @@ p {
 
 .nation-select-wrap {
   position: relative;
-  display: none;
-  margin-top: 1.25rem;
+  display: block;
+  width: min(28rem, 100%);
+  margin: 1.25rem auto 0;
 }
 
 .nation-select-wrap span {
@@ -624,17 +602,19 @@ p {
   -webkit-appearance: none;
   width: 100%;
   min-height: 3.35rem;
-  border: 1px solid rgba(255, 210, 122, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
   padding: 0 3.1rem 0 1.15rem;
   background:
-    linear-gradient(135deg, rgba(255, 67, 93, 0.2), rgba(84, 215, 255, 0.15)),
-    rgba(9, 12, 22, 0.92);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(214, 245, 255, 0.12)),
+    radial-gradient(circle at 12% 18%, rgba(255, 67, 93, 0.24), transparent 16rem),
+    rgba(9, 12, 22, 0.9);
   color: var(--text);
   color-scheme: dark;
   font: inherit;
   font-weight: 900;
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .nation-select-wrap select:focus {
@@ -728,6 +708,10 @@ p {
   gap: 0.75rem;
 }
 
+.newsletter-form .form-row {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr) auto;
+}
+
 input,
 button {
   min-height: 3.1rem;
@@ -764,6 +748,14 @@ button {
 .site-footer p {
   max-width: 520px;
   margin: 0.4rem 0 0;
+}
+
+.footer-brand {
+  font-family: var(--brand-font);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .social-links {
@@ -1177,34 +1169,8 @@ button {
     min-height: 0;
   }
 
-  .pin-label {
-    right: auto;
-    left: 1.25rem;
-    max-width: min(11rem, 52vw);
-    white-space: normal;
-    transform: translate(0.25rem, -50%);
-  }
-
-  .pin-label::after {
-    right: auto;
-    left: -0.32rem;
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.52);
-    border-left: 1px solid rgba(255, 255, 255, 0.52);
-  }
-
-  .map-pin:hover .pin-label,
-  .map-pin:focus-visible .pin-label,
-  .map-pin.is-active .pin-label {
-    transform: translate(0, -50%);
-  }
-
-  .nation-tabs {
-    display: none;
-  }
-
   .nation-select-wrap {
-    display: block;
+    width: min(24rem, 100%);
   }
 }
 
@@ -1236,6 +1202,7 @@ button {
   .world-map {
     aspect-ratio: 2 / 1;
     width: 100%;
+    min-height: 180px;
   }
 
   .button,
