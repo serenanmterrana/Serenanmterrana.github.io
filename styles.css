@@ -579,11 +579,7 @@ p {
 }
 
 .nation-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
+  display: none;
 }
 
 .nation-tab {
@@ -605,8 +601,9 @@ p {
 
 .nation-select-wrap {
   position: relative;
-  display: none;
-  margin-top: 1.25rem;
+  display: block;
+  width: min(28rem, 100%);
+  margin: 1.25rem auto 0;
 }
 
 .nation-select-wrap span {
@@ -624,17 +621,19 @@ p {
   -webkit-appearance: none;
   width: 100%;
   min-height: 3.35rem;
-  border: 1px solid rgba(255, 210, 122, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
   padding: 0 3.1rem 0 1.15rem;
   background:
-    linear-gradient(135deg, rgba(255, 67, 93, 0.2), rgba(84, 215, 255, 0.15)),
-    rgba(9, 12, 22, 0.92);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(214, 245, 255, 0.12)),
+    radial-gradient(circle at 12% 18%, rgba(255, 67, 93, 0.24), transparent 16rem),
+    rgba(9, 12, 22, 0.9);
   color: var(--text);
   color-scheme: dark;
   font: inherit;
   font-weight: 900;
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .nation-select-wrap select:focus {
@@ -1177,34 +1176,8 @@ button {
     min-height: 0;
   }
 
-  .pin-label {
-    right: auto;
-    left: 1.25rem;
-    max-width: min(11rem, 52vw);
-    white-space: normal;
-    transform: translate(0.25rem, -50%);
-  }
-
-  .pin-label::after {
-    right: auto;
-    left: -0.32rem;
-    border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.52);
-    border-left: 1px solid rgba(255, 255, 255, 0.52);
-  }
-
-  .map-pin:hover .pin-label,
-  .map-pin:focus-visible .pin-label,
-  .map-pin.is-active .pin-label {
-    transform: translate(0, -50%);
-  }
-
-  .nation-tabs {
-    display: none;
-  }
-
   .nation-select-wrap {
-    display: block;
+    width: min(24rem, 100%);
   }
 }
 
@@ -1236,6 +1209,7 @@ button {
   .world-map {
     aspect-ratio: 2 / 1;
     width: 100%;
+    min-height: 180px;
   }
 
   .button,
