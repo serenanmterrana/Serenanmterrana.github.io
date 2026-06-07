@@ -1187,6 +1187,10 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .newsletter-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
   .gallery-track {
     grid-auto-columns: minmax(230px, 82vw);
   }
