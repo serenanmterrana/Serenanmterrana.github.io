@@ -472,6 +472,10 @@ p {
   box-shadow: var(--shadow);
 }
 
+.world-stage {
+  touch-action: manipulation;
+}
+
 .world-map {
   position: relative;
   aspect-ratio: 2 / 1;
@@ -481,6 +485,7 @@ p {
     url("https://commons.wikimedia.org/wiki/Special:FilePath/Land_shallow_topo_2048.jpg?width=2560");
   background-size: 100% 100%, 100% 100%;
   background-position: center;
+  background-repeat: no-repeat;
   background-blend-mode: soft-light, normal;
 }
 
@@ -506,7 +511,8 @@ p {
 }
 
 .map-pin:hover,
-.map-pin:focus-visible {
+.map-pin:focus-visible,
+.map-pin.is-active {
   z-index: 12;
 }
 
@@ -566,7 +572,8 @@ p {
 }
 
 .map-pin:hover .pin-label,
-.map-pin:focus-visible .pin-label {
+.map-pin:focus-visible .pin-label,
+.map-pin.is-active .pin-label {
   opacity: 1;
   transform: translate(0, -50%);
 }
@@ -594,6 +601,62 @@ p {
 .nation-tab.private {
   border-color: rgba(255, 67, 93, 0.7);
   background: rgba(255, 67, 93, 0.14);
+}
+
+.nation-select-wrap {
+  position: relative;
+  display: none;
+  margin-top: 1.25rem;
+}
+
+.nation-select-wrap span {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nation-select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  min-height: 3.35rem;
+  border: 1px solid rgba(255, 210, 122, 0.36);
+  border-radius: 999px;
+  padding: 0 3.1rem 0 1.15rem;
+  background:
+    linear-gradient(135deg, rgba(255, 67, 93, 0.2), rgba(84, 215, 255, 0.15)),
+    rgba(9, 12, 22, 0.92);
+  color: var(--text);
+  color-scheme: dark;
+  font: inherit;
+  font-weight: 900;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.nation-select-wrap select:focus {
+  outline: 2px solid rgba(255, 210, 122, 0.58);
+  outline-offset: 3px;
+}
+
+.nation-select-wrap select option {
+  background: #11131c;
+  color: #f8f4ef;
+}
+
+.nation-select-wrap::after {
+  content: "\f078";
+  position: absolute;
+  right: 1.15rem;
+  bottom: 0.92rem;
+  color: var(--gold);
+  font-family: "Font Awesome 6 Free";
+  font-size: 0.9rem;
+  font-weight: 900;
+  pointer-events: none;
 }
 
 .giving-panel,
@@ -1111,11 +1174,37 @@ button {
   }
 
   .world-map {
-    min-height: 260px;
+    min-height: 0;
   }
 
   .pin-label {
+    right: auto;
+    left: 1.25rem;
+    max-width: min(11rem, 52vw);
+    white-space: normal;
+    transform: translate(0.25rem, -50%);
+  }
+
+  .pin-label::after {
+    right: auto;
+    left: -0.32rem;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+    border-left: 1px solid rgba(255, 255, 255, 0.52);
+  }
+
+  .map-pin:hover .pin-label,
+  .map-pin:focus-visible .pin-label,
+  .map-pin.is-active .pin-label {
+    transform: translate(0, -50%);
+  }
+
+  .nation-tabs {
     display: none;
+  }
+
+  .nation-select-wrap {
+    display: block;
   }
 }
 
@@ -1134,6 +1223,19 @@ button {
 
   .gallery-track {
     grid-auto-columns: minmax(230px, 82vw);
+  }
+
+  .map-section {
+    padding-inline: 0.85rem;
+  }
+
+  .world-stage {
+    margin-top: 1.5rem;
+  }
+
+  .world-map {
+    aspect-ratio: 2 / 1;
+    width: 100%;
   }
 
   .button,
