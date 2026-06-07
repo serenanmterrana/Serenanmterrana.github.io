@@ -52,6 +52,8 @@ function renderMap() {
     pin.style.left = pos.left;
     pin.style.top = pos.top;
     pin.dataset.nation = nation.slug;
+    const xPercent = Number.parseFloat(pos.left);
+    pin.classList.add(xPercent < 42 ? "label-right" : xPercent > 58 ? "label-left" : "label-top");
     pin.setAttribute("aria-label", nation.privateLabel ? "Open mission testimonies and gallery" : `Open ${nation.name} testimonies and gallery`);
     pin.innerHTML = `<span class="pin-dot"></span>${nation.privateLabel ? "" : `<span class="pin-label">${nation.flag} ${nation.name}</span>`}`;
     map.appendChild(pin);
