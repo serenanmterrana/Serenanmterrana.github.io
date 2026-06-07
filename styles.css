@@ -141,7 +141,7 @@ img {
   position: relative;
   display: grid;
   align-items: end;
-  padding: 8rem clamp(1rem, 6vw, 5rem) clamp(2rem, 5vh, 3.5rem);
+  padding: 8rem clamp(1rem, 6vw, 5rem) clamp(2rem, 7vh, 5rem);
   overflow: hidden;
   isolation: isolate;
 }
@@ -152,8 +152,8 @@ img {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(3, 4, 8, 0.7) 0%, rgba(3, 4, 8, 0.38) 46%, rgba(3, 4, 8, 0.12) 100%),
-    linear-gradient(0deg, rgba(6, 7, 11, 0.98) 0%, rgba(6, 7, 11, 0.78) 28%, transparent 68%);
+    linear-gradient(90deg, rgba(3, 4, 8, 0.45) 0%, rgba(3, 4, 8, 0.24) 48%, rgba(3, 4, 8, 0.1) 100%),
+    linear-gradient(0deg, rgba(6, 7, 11, 0.98) 0%, rgba(6, 7, 11, 0.78) 24%, rgba(6, 7, 11, 0.18) 58%, transparent 78%);
 }
 
 .hero-photo {
@@ -196,17 +196,36 @@ img {
 }
 
 .hero-content {
-  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.4vw, 1.35rem);
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 0;
+  text-align: center;
+}
+
+.hero-content .eyebrow {
+  position: absolute;
+  top: clamp(6.4rem, 14vh, 8.5rem);
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.78);
 }
 
 .hero-content h1 {
-  max-width: 620px;
-  margin-bottom: 0.85rem;
+  max-width: 820px;
+  margin-bottom: 0;
   font-family: var(--heading-font);
-  font-size: clamp(2.25rem, 4.6vw, 4.55rem);
+  font-size: clamp(2.3rem, 5vw, 5.25rem);
   font-weight: 600;
-  line-height: 1.03;
+  line-height: 0.98;
   text-wrap: balance;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.72);
 }
 
 .eyebrow {
@@ -258,9 +277,11 @@ p {
 }
 
 .hero-verse {
-  max-width: 680px;
+  max-width: 720px;
+  margin-bottom: 0;
   color: rgba(255, 255, 255, 0.86);
   font-size: clamp(1.05rem, 2vw, 1.35rem);
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.72);
 }
 
 .hero-verse span {
@@ -276,6 +297,7 @@ p {
   gap: 0.85rem;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 .button {
@@ -552,11 +574,56 @@ p {
   transform: translateY(-50%) rotate(45deg);
 }
 
+.map-pin.label-right .pin-label {
+  right: auto;
+  left: 1.4rem;
+  transform: translate(0.3rem, -50%);
+}
+
+.map-pin.label-right .pin-label::after {
+  right: auto;
+  left: -0.32rem;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+  border-left: 1px solid rgba(255, 255, 255, 0.52);
+}
+
+.map-pin.label-top .pin-label {
+  top: auto;
+  right: auto;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translate(-50%, -0.3rem);
+}
+
+.map-pin.label-top .pin-label::after {
+  top: auto;
+  right: auto;
+  bottom: -0.32rem;
+  left: 50%;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.52);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+  transform: translateX(-50%) rotate(45deg);
+}
+
 .map-pin:hover .pin-label,
 .map-pin:focus-visible .pin-label,
 .map-pin.is-active .pin-label {
   opacity: 1;
   transform: translate(0, -50%);
+}
+
+.map-pin.label-right:hover .pin-label,
+.map-pin.label-right:focus-visible .pin-label,
+.map-pin.label-right.is-active .pin-label {
+  transform: translate(0, -50%);
+}
+
+.map-pin.label-top:hover .pin-label,
+.map-pin.label-top:focus-visible .pin-label,
+.map-pin.label-top.is-active .pin-label {
+  transform: translate(-50%, 0);
 }
 
 .nation-tabs {
@@ -649,9 +716,24 @@ p {
   box-shadow: var(--shadow);
 }
 
+.giving-panel {
+  text-align: center;
+}
+
+.giving-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 12rem));
+  justify-content: center;
+}
+
+.giving-grid .button {
+  width: 100%;
+}
+
 .payment-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.65rem;
   margin-top: 1rem;
 }
@@ -1158,8 +1240,17 @@ button {
   }
 
   .hero {
-    min-height: 86vh;
-    padding-bottom: 2rem;
+    min-height: 100svh;
+    padding-bottom: clamp(2rem, 7vh, 4rem);
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .hero-content .eyebrow {
+    margin-bottom: 0;
   }
 
   .stats-row {
@@ -1185,7 +1276,15 @@ button {
   }
 
   .hero-content h1 {
-    font-size: clamp(2.1rem, 10vw, 3.25rem);
+    font-size: clamp(2rem, 9vw, 3.1rem);
+  }
+
+  .hero-content .eyebrow {
+    top: clamp(8rem, 19vh, 9rem);
+    max-width: calc(100% - 1.25rem);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
   }
 
   .form-row {
@@ -1206,6 +1305,7 @@ button {
 
   .world-stage {
     margin-top: 1.5rem;
+    overflow: visible;
   }
 
   .world-map {
@@ -1214,9 +1314,19 @@ button {
     min-height: 180px;
   }
 
+  .pin-label {
+    max-width: min(10rem, 58vw);
+    padding: 0.34rem 0.62rem;
+    font-size: 0.7rem;
+  }
+
   .button,
   button {
     width: 100%;
+  }
+
+  .giving-grid {
+    grid-template-columns: 1fr;
   }
 
   .carousel-button {
