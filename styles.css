@@ -178,6 +178,10 @@ img {
 
 .photo-three {
   background-image: url("images/IMG_6306.jpg");
+  animation-delay: 8s;
+}
+.photo-four {
+  background-image: url("");
   animation-delay: 16s;
 }
 
