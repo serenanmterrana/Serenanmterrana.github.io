@@ -1333,3 +1333,28 @@ button {
     width: 2.75rem;
   }
 }
+/* Etsy page eyebrow text updates only */
+.shop-page .shop-hero .eyebrow {
+  background: linear-gradient(135deg, var(--rose), #ff8a3d, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 0.95rem;
+}
+
+.shop-page .shop-section .section-heading .eyebrow,
+.shop-page .shop-details .eyebrow {
+  color: var(--gold);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+}
+
+@media (max-width: 560px) {
+  .shop-page .shop-hero .eyebrow,
+  .shop-page .shop-section .section-heading .eyebrow,
+  .shop-page .shop-details .eyebrow {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+}
