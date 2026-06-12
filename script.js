@@ -18,18 +18,8 @@ const nations = [
   { slug: "india", name: "India", flag: "", lat: 22.9, lon: 78.9, region: "Asia", privateLabel: true },
 ];
 
-const photos = [
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
-];
-
 function nationUrl(slug) {
   return `nations/${slug}.html`;
-}
 }
 
 function mapPosition(lat, lon) {
@@ -53,8 +43,6 @@ function renderMap() {
     pin.style.left = pos.left;
     pin.style.top = pos.top;
     pin.dataset.nation = nation.slug;
-    const xPercent = Number.parseFloat(pos.left);
-    pin.classList.add(xPercent < 42 ? "label-right" : xPercent > 58 ? "label-left" : "label-top");
     pin.setAttribute("aria-label", nation.privateLabel ? "Open mission testimonies and gallery" : `Open ${nation.name} testimonies and gallery`);
     pin.innerHTML = `<span class="pin-dot"></span>${nation.privateLabel ? "" : `<span class="pin-label">${nation.flag} ${nation.name}</span>`}`;
     map.appendChild(pin);
@@ -94,126 +82,11 @@ function renderMap() {
   });
 }
 
-function renderNationPage() {
-  const title = document.querySelector("#nationTitle");
-  if (!title) return;
-
-  const params = new URLSearchParams(window.location.search);
-  const slug = params.get("nation") || "usa";
-  const nation = nations.find((item) => item.slug === slug) || nations[0];
-  const publicName = nation.privateLabel ? "Mission Field" : `${nation.flag} ${nation.name}`;
-
-  document.title = `${nation.privateLabel ? "Mission Field" : nation.name} Testimonies | Kingdom Journey`;
-  title.textContent = `${publicName} Testimonies`;
-  document.querySelector("#nationRegion").textContent = nation.region;
-  document.querySelector("#nationIntro").textContent =
-    nation.privateLabel
-      ? "A protected place for photos, prayer updates, and testimonies from this mission field."
-      : `A place to collect photos, testimonies, prayer reports, and stories from ${nation.name}.`;
-
-  const testimonies = document.querySelector("#testimonies");
-  const gallery = document.querySelector("#gallery");
+function setupGalleryCarousel() {
+  const gallery = document.querySelector(".gallery-track");
   const galleryPrev = document.querySelector("[data-gallery-prev]");
   const galleryNext = document.querySelector("[data-gallery-next]");
-
-  const testimonyItems = [
-    {
-      title: "Healing and Hope",
-      image: photos[0],
-      text: "A placeholder testimony can go here: a healing, a salvation story, a family restored, or a divine appointment.",
-      videos: [
-        { label: "TikTok", icon: "fa-brands fa-tiktok", url: "#" },
-        { label: "Instagram", icon: "fa-brands fa-instagram", url: "#" },
-        { label: "YouTube", icon: "fa-brands fa-youtube", url: "#" },
-      ],
-    },
-    {
-      title: "Local Voices",
-      image: photos[1],
-      text: "Add another short story from a local leader, partner, translator, or person impacted by the trip.",
-      videos: [
-        { label: "TikTok", icon: "fa-brands fa-tiktok", url: "#" },
-        { label: "Instagram", icon: "fa-brands fa-instagram", url: "#" },
-        { label: "Facebook", icon: "fa-brands fa-facebook-f", url: "#" },
-      ],
-    },
-    {
-      title: "Prayer and Next Steps",
-      image: photos[2],
-      text: "Include prayer requests, next steps, and what support makes possible in this nation.",
-      videos: [
-        { label: "Instagram", icon: "fa-brands fa-instagram", url: "#" },
-        { label: "YouTube", icon: "fa-brands fa-youtube", url: "#" },
-        { label: "Facebook", icon: "fa-brands fa-facebook-f", url: "#" },
-      ],
-    },
-  ];
-
-  if (nation.slug === "usa") {
-    testimonyItems[0] = {
-      title: "USA Testimony Playlist",
-      image: photos[0],
-      text: "Showcase a YouTube playlist here with USA ministry testimonies, messages, worship moments, and field updates.",
-      playlist: {
-        label: "Open YouTube Playlist",
-        icon: "fa-brands fa-youtube",
-        url: "#",
-      },
-      videos: [],
-    };
-  }
-
-  testimonies.innerHTML = testimonyItems
-    .map(
-      (item) => `
-        <article class="testimony-card${item.playlist ? " playlist-card" : ""}">
-          <img src="${item.image}" alt="${item.title} testimony photo" />
-          <div>
-            <h3>${item.title}</h3>
-            <p>${item.text}</p>
-            ${
-              item.playlist
-                ? `
-                  <a class="playlist-link" href="${item.playlist.url}" target="_blank" rel="noopener" aria-label="${item.playlist.label}">
-                    <i class="${item.playlist.icon}"></i>
-                    <span>${item.playlist.label}</span>
-                  </a>
-                `
-                : `
-                  <div class="testimony-video-links" aria-label="${item.title} social media testimony videos">
-                    <span>Watch the testimony</span>
-                    <div>
-                      ${item.videos
-                        .map(
-                          (video) => `
-                            <a href="${video.url}" aria-label="${video.label} testimony video">
-                              <i class="${video.icon}"></i>
-                            </a>
-                          `
-                        )
-                        .join("")}
-                    </div>
-                  </div>
-                `
-            }
-          </div>
-        </article>
-      `
-    )
-    .join("");
-
-  const galleryPhotos = [
-    ...photos,
-    "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80",
-    "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80",
-  ];
-
-  gallery.innerHTML = galleryPhotos
-    .map((src, index) => `<img src="${src}" alt="Mission gallery placeholder ${index + 1}" />`)
-    .join("");
+  if (!gallery) return;
 
   const scrollGallery = (direction) => {
     const distance = Math.max(gallery.clientWidth * 0.86, 280);
@@ -225,4 +98,4 @@ function renderNationPage() {
 }
 
 renderMap();
-renderNationPage();
+setupGalleryCarousel();
