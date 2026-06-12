@@ -28,7 +28,8 @@ const photos = [
 ];
 
 function nationUrl(slug) {
-  return `nation.html?nation=${encodeURIComponent(slug)}`;
+  return `nations/${slug}.html`;
+}
 }
 
 function mapPosition(lat, lon) {
