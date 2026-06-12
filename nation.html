@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      const oldNationSlug = new URLSearchParams(window.location.search).get("nation");
+      window.location.replace(oldNationSlug ? `nations/${oldNationSlug}.html` : "index.html#nations");
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="nation-page">
